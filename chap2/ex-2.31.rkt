@@ -1,0 +1,14 @@
+#lang racket
+
+; Exercise 2.31
+
+(define (tree-map proc tree)
+  (map (lambda (sub-tree)
+         (if (pair? sub-tree)
+             (tree-map proc sub-tree)
+             (proc sub-tree)))
+       tree))
+
+(define (square-tree-3 tree)
+  (tree-map (lambda (x) (* x x)) tree))
+
